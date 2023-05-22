@@ -3,49 +3,6 @@ header('Content-Type: text/html; charset=UTF-8');
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-
-  if (!empty($_GET['save'])) {
-
-    print('Результаты были сохранены');
-  }
-
-  include('form.php');
-
-  exit();
-}
-
-$errors = FALSE;
-if (empty($_POST['name'])) {
-  print('Как вас зовут? <br/>');
-  $errors = TRUE;
-}
-
-if (empty($_POST['birthdayear']) || !is_numeric($_POST['birthdayear']) || !preg_match('/^\d+$/', $_POST['birthdayear'])) {
-  print('В каком году вы родились? <br/>');
-  $errors = TRUE;
-}
-
-if (empty($_POST['email']) || !preg_match('/^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/u',$_POST['email'])) {
-  print('Напишить свой e-mail <br/>');
-  $errors = TRUE;
-}
-
-if (empty($_POST['gen']) || ($_POST['gen']!='m' && $_POST['gen']!='w')) {
-  print('Какого вы пола? <br/>');
-  $errors = TRUE;
-}
-if (empty($_POST['body']) || ($_POST['body']!='5' && $_POST['body']!='4' && $_POST['limbs']!='0' )) {
-  print('Сколько у вас конечностей? <br/>');
-  $errors = TRUE;
-}
-
-if (empty($_POST['biographiya']) || !preg_match('/^([0-9a-zA-Zа-яА-Я\,\.\s]{1,})$/', $_POST['biographiya']) ){
-  print('Напишите про себя <br/>');
-  $errors = TRUE;
-}
-
-header('Content-Type: text/html; charset=UTF-8');
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
@@ -61,38 +18,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 $errors = FALSE;
 if (empty($_POST['name'])) {
-  print('Как вас зовут? <br/>');
+  print('Как вас зовут?<br/>');
   $errors = TRUE;
 }
 
 if (empty($_POST['birthdayear']) || !is_numeric($_POST['birthdayear']) || !preg_match('/^\d+$/', $_POST['birthdayear'])) {
-  print('В каком году вы родились? <br/>');
+  print('В каком году вы родились?<br/>');
   $errors = TRUE;
 }
 
 if (empty($_POST['email']) || !preg_match('/^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/u',$_POST['email'])) {
-  print('Напишите свой e-mail <br/>');
+  print('Напишите свой e-mail<br/>');
   $errors = TRUE;
 }
 
-if (empty($_POST['gen']) || ($_POST['gen']!='m' && $_POST['gen']!='w')) {
-  print('Какого вы пола? <br/>');
+if (empty($_POST['gen']) || ($_POST['gen']!='m' && $_POST['gen']!='f')) {
+  print('Какого вы пола?<br/>');
   $errors = TRUE;
 }
-if (empty($_POST['body']) || ($_POST['body']!='0' && $_POST['body']!='5' && $_POST['body']!='4')) {
-  print('Сколько у вас конечностей? <br/>');
+if (empty($_POST['body']) || ($_POST['body']!='3' && $_POST['body']!='4' && $_POST['body']!='5')) {
+  print('Сколько у вас конечностей?<br/>');
   $errors = TRUE;
 }
 
 if (empty($_POST['biographiya']) || !preg_match('/^([0-9a-zA-Zа-яА-Я\,\.\s]{1,})$/', $_POST['biographiya']) ){
-  print('Напишите про себя <br/>');
+  print('Напишите про себя<br/>');
   $errors = TRUE;
 }
 if (empty($_POST['ability'])) {
-  print('Какие бы вы хотели суперспособности? <br/>');
+  print('Какие бы вы хотели суперспособности?<br/>');
   $errors = TRUE;
 }
-
+if (!isset($_POST['check'])) {
+	print('Ознакомьтесь с соглашением контракта<br/>');
+    $errors = TRUE;
+}
 if ($errors) {
   exit();
 }
