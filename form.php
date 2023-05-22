@@ -42,8 +42,8 @@
       Количество конечностей<br/>
     <div class="lim">
     <label><input type="radio" checked="checked"
-      name="body" value="0" />
-      0</label>
+      name="body" value="3" />
+      3</label>
     <label><input type="radio"
       name="body" value="4" />
       4</label><br />
@@ -66,7 +66,7 @@
         <textarea name="biographiya"></textarea>
         </label><br />
         
-      <label><input type="checkbox" checked="checked"
+      <label><input type="checkbox"
         name="check" />
         Ознакомился с контрактом</label>
 
